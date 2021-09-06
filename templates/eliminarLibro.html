@@ -1,0 +1,29 @@
+{% extends "libros.html" %}
+    {% block contenido %}
+    <br>
+    <h5 class="center"> Estás seguro que querés eliminar el libro {{libro.titulo}}? </h5>
+    <br>
+    <div class="container">
+    <div class="row">
+        <div class="col l3 m2 s1"></div>
+        <div class="col l3 m4 s4">
+            <form action="#" method='post'>
+                <button class="waves-effect waves-light center btn red darken-3" type="submit"> Eliminar</button>
+            </form>
+        </div>
+        <div class="col l3 m2 s1"></div>
+        <div class="col l3 m4 s4">
+            <a href='{{ url_for("mostrarLibros") }}'>
+                <button class="waves-effect waves-light center btn orange darken-3"> Cancelar</button>
+            </a>
+        </div>
+    </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock %}

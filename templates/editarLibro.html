@@ -1,0 +1,35 @@
+{% extends "libros.html" %}
+    {% block contenido %}
+<div class="container">
+    <div class="row">
+        <div class="col l8 m6 s6">
+            <form action="{{ url_for('editarLibro',libro_id = libro.id)}}" method="post">
+                <div class="form-group">
+                    <label for="nombre">Titulo:</label>
+                    <input type="text" class="form-control" name="nombre" value="{{libro.titulo }}">
+                    <label for="nombre">Autor:</label>
+                    <input type="text" class="form-control" name="autor" value="{{libro.autor }}">
+                    <label for="nombre">Genero:</label>
+                    <input type="text" class="form-control" name="genero" value="{{libro.genero }}">
+                    <button class="waves-effect waves-light center btn green darken-3" type="submit"> Guardar</button>
+                </div>
+            </form>
+        </div>
+        <div class="col l4 m2 s2">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href='{{ url_for("mostrarLibros") }}'>
+                <button class="waves-effect waves-light center btn orange darken-3">Cancelar</button>
+            </a>
+        </div>
+</div>
+</div>
+{% endblock %}

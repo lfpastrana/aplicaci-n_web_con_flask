@@ -1,0 +1,121 @@
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}" media="screen,projection"/>
+        <title>Gestión de Libros</title>
+
+    </head>
+    <body>
+    <header>
+        <div>
+            <div class="row">
+                <div class="col l12 m12 s12">
+        <div class="navbar">
+            <nav class="deep-orange darken-1">
+                <div class="nav-wrapper">
+                    <a href="{{ url_for('mostrarLibros') }}" class="brand-logo"><img src="{{ url_for('static', filename='images/librologo.png') }}"> </a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ url_for('nuestrahistoria') }}">Nuestra Historia</a></li>
+                    <li><a href="{{ url_for('ayuda') }}">Ayuda</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+        <ul class="sidenav" id="mobile-demo"><!--es para el menu hamburguesa-->
+            <li><a href="{{ url_for('nuestrahistoria') }}">Nuestra Historia</a></li>
+            <li><a href="{{ url_for('ayuda') }}">Ayuda</a></li>
+        </ul>
+    
+    </header>
+    {% block contenido %}
+    
+    <div>
+        <div class="row">
+            <div class="col l12 m12 s12">
+            <h1>Libros</h1>
+        <table class="centered">
+            <thead>
+            <tr>
+                <th>Libro</th>
+                <th>Autor</th>
+                <th>Genero</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            </thead>
+
+            {% for libro in libros %}
+            <tbody>
+            <tr>
+                <td>{{libro.titulo}}</td>
+                <td>{{libro.autor}}</td>
+                <td>{{libro.genero}}</td>
+                
+                <td>
+                    <a href="{{url_for('editarLibro', libro_id = libro.id )}}" class="indigo darken-4 btn"><i class="material-icons">edit</i></a>
+                </td>
+                <td>
+                    <a href="{{url_for('eliminarLibro', libro_id = libro.id )}}" class="indigo darken-4 btn"><i class="material-icons">delete</i></a>
+                </td>
+            </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        <br>
+
+        <a href="{{url_for('nuevoLibro')}}"class="indigo darken-4 btn"><i class="material-icons">add</i>
+            <i class="material-icons">library_books</i></a>
+
+            <br>
+        </div>    
+        </div>    
+        </div>    
+        {% endblock %}
+
+        <br>
+
+    <div>   
+        <div class="row"> 
+            <div class="col l12 m12 s12">
+    <footer class="page-footer deep-purple darken-1">
+          
+            <div class="container">
+              <div class="row"> 
+                <div class="col l4 m4 s12">
+                 <h6 class="text center white-text"><i class="tiny material-icons">contact_phone</i> 358-4621789</h6>
+                </div>
+                <div class="col l4 m4 s12">
+                    <h6 class="text center white-text"><i class="tiny material-icons">email</i> gestion@libros.com.ar</h6>
+                </div>
+                <div class="col l4 m4 s12">
+                    <h6 class="text center white-text"><i class="tiny material-icons">add_location</i> San Martín 1258 - Mendoza</h6>
+                </div>
+              </div>  
+            </div>
+            
+    </footer>
+</div>
+</div>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          M.AutoInit();
+        });
+    </script>
+    </body>
+</html>
